@@ -12,10 +12,12 @@
     </mat-card>
     <span *ngIf="images.length==0">No Data Found</span>
   </div>
+  <!-- add image button -->
   <div class="add-image-btn">
     <button mat-fab color="primary" (click)="openModal()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
 </section>
+<!-- overlay -->
 <app-my-overlay *ngIf="isShowOverlay"></app-my-overlay>
