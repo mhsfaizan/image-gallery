@@ -9,10 +9,11 @@ import { SignupComponent } from './signup/signup.component';
 import { UserAuthGuard } from './user-auth.guard';
 import { TestUserComponent } from './test-user/test-user.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { IsLoginGuard } from './is-login.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:'/login',pathMatch:'full'},
-  {path:'login',component:LoginComponent},
+  {path:'login',canActivate:[IsLoginGuard],component:LoginComponent},
   {
     path:'dashboard',
     canActivate:[UserAuthGuard],

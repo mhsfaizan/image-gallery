@@ -1,5 +1,5 @@
 <section class="home">
-  <div style="margin-right:1rem;flex-basis:30%" *ngFor="let image of images" (click)="openModal(image)">
+  <div class="images" *ngFor="let image of images" (click)="openModal(image)">
     <mat-card>
       <mat-card-title><p>{{image.imageTitle}}</p></mat-card-title>
       <mat-card-content>
