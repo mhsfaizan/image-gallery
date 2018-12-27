@@ -1,0 +1,45 @@
+<section *ngIf="data.addGallery">
+  <h1 mat-dialog-title align="center">{{data.title}}</h1>
+  <div mat-dialog-content>
+    <div class="image-form">
+      <form [formGroup]="galForm">
+        <mat-form-field class="form-control">
+          <input matInput placeholder="Title" formControlName="imageTitle">
+        </mat-form-field>
+        <label for="my-image">
+          <mat-icon>note_add</mat-icon>
+        </label>
+        <hr>
+        <input type="file" hidden id="my-image" (change)="upload($event.target)" accept="image/*" formControlName="image">
+        {{galForm.value.image|imageName}}
+        <mat-form-field class="form-control">
+          <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-button (click)="onNoClick()">Cancel</button>
+          <button mat-raised-button color="primary" [mat-dialog-close]="galForm.value" cdkFocusInitial [disabled]="galForm.invalid">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<section *ngIf="data.isFullModal" id="full-modal">
+  <div class="gallery-container">
+    <mat-card class="gallery">
+      <button class="cancel-btn" (click)="onNoClick()">
+        <mat-icon>clear</mat-icon>
+      </button>
+      <mat-card-header>
+        <mat-card-title class="my-mat-card-header">{{data.title}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="data.url" alt="{{data.description}}" class="my-image">
+      <mat-card-content>
+        <p>{{data.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="warn" (click)="delete(data.imageid,data.imagepath)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>
+<app-my-overlay *ngIf="isSHowOverlay"></app-my-overlay>

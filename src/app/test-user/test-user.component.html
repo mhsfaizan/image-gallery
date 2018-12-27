@@ -1,0 +1,27 @@
+<section id="test-user">
+  <mat-card class="test-user">
+    <span>Enter  Github Username</span>
+    <br><br>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Enter Username" #input (keyup)="getGitInfo($event.keyCode,input.value)">
+      </mat-form-field>
+      <button mat-raised-button (click)="getGitInfo($event.keyCode,input.value,true)">search</button>
+    </mat-card-content>
+  </mat-card>
+  <div class="user-info">
+      <div class="my-spinner" *ngIf="isShowSpinner">
+          <mat-spinner></mat-spinner>
+      </div>
+      <div class="user" *ngIf="isFound==1">
+          <p><b>Name:</b>{{user.login}}</p>
+          <p><b>Created on:  </b>{{user.created_at|date}}</p>
+          <p><b>Followers:  </b>{{user.followers}}</p>
+          <p><b>Following:  </b>{{user.following}}</p>
+          <img width="100%" [src]="user.avatar_url">
+      </div>
+      <div *ngIf="isFound==2">
+          <span>Not Found</span>
+      </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+.example-full-width {
+width: 100%;
+}
+  .disabled{
+    cursor: not-allowed!important;
+  }
+  .login-footer a,.signup-footer a{
+    padding: 0!important; 
+  }
+  @media(max-width:768px){
+    .signup{
+        width: 20rem!important;
+    }
+    .login-footer{
+        margin:1rem 0rem 1rem!important;
+    }
+    .login-header{
+        /* margin: 0rem!important; */
+        margin-top: 1rem!important;
+        margin-bottom: 1rem!important;
+    }
+    .signup-body{
+      padding-top: 0!important;
+    }
+    .login{
+      width: 15rem!important;
+    }
+}
+.my-mat-card-header{
+  margin-left:-16px;
+}

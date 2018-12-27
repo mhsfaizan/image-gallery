@@ -1,0 +1,31 @@
+.login-container{
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.login{
+    border-radius:8px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    width: 25rem;
+    padding: 20px;
+    background: #fff;
+}
+.my-progress{
+    margin: -20px;
+    margin-bottom: 0;
+}
+
+.login-header{
+    /* background: #673ab7; */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center
+}
+.login-footer{
+    margin: 2rem 0rem 1rem;
+    display: flex;
+}
+.login-footer button:last-child{
+    margin-left: auto;
+}

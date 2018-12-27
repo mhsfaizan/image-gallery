@@ -1,0 +1,37 @@
+.image-form{
+    width: 100%;
+}
+.image-form .form-control{
+    width: 100%;
+}
+.image-form div{
+    margin-top: 1rem;
+    display: flex;
+}
+.image-form div button:last-child{
+    margin-left: auto;
+    min-width: 6rem;
+}
+.gallery-container{
+    margin:-24px;
+}
+.cancel-btn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    outline: none;
+}
+.my-image{
+    height: 40rem;
+    object-fit: cover;
+    object-position: top;
+}
+@media(max-width:768px){
+    .my-image{
+        height: 22rem;
+    }
+}

@@ -1,0 +1,38 @@
+<section id="signup">
+  <div class="signup-container">
+    <div class="signup">
+      <mat-progress-bar  mode="indeterminate" *ngIf="isShowProgress"></mat-progress-bar>
+      <div class="signup-header">
+        <h1>SignUp</h1>
+      </div>
+      <div class="signup-body">
+        <form [formGroup]="signupForm" class="example-form" (submit)="signup($event.target)">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" formControlName="name">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width">
+            <input matInput type="email" placeholder="Email" formControlName="email">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Phone Number" formControlName="phone">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Address" formControlName="address">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  type="password" placeholder="Password" [(ngModel)]="pass" formControlName="password">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput type="password"  placeholder="Confirm Password" formControlName="cpassword" pattern="{{pass}}">
+          </mat-form-field>
+          <div class="signup-footer">
+              <a routerLink='/login' mat-button>Already have an account</a>
+            <button mat-raised-button color="primary" [disabled]="signupForm.invalid" [ngClass]="{'disabled':signupForm.invalid}"> signup</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<app-my-overlay *ngIf="_login.isShowOverlay"></app-my-overlay>

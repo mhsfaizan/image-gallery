@@ -1,0 +1,35 @@
+.test-user,.user-info{
+    /* margin:2rem 0rem 0rem 2rem; */
+    width:30rem;
+    position: absolute;
+    top: 10rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.test-user mat-form-field{
+    width: 100%;
+}
+.test-user button{
+    width:100%;
+}
+.user-info{
+    top:20rem;
+    /* background: #eee; */
+    border-radius:8px;
+    min-height: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.user{
+    width: 100%;
+    padding: 20px;
+    background-color: #eee;
+    margin: -20px;
+}
+@media(max-width:768px){
+    .test-user,.user-info{
+        width: 15rem;
+    }
+}

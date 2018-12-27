@@ -1,0 +1,24 @@
+<section id="login">
+  <div class="login-container">
+    <div class="login">
+      <div class="my-progress" *ngIf="isShowProgress">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <h1 class="login-header">Gallery</h1>
+      <form [formGroup]="loginForm" class="example-form" (submit)="login($event.target)">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email"  formControlName="email">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <input matInput type="password" placeholder="Password" formControlName="password" >
+        </mat-form-field>
+        <div class="login-footer">
+          <a routerLink="/signup" mat-button>Signup</a>
+          <button mat-raised-button color="primary" [disabled]="loginForm.invalid" [ngClass]="{'disabled':loginForm.invalid}">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<app-my-overlay *ngIf="_login.isShowOverlay"></app-my-overlay>

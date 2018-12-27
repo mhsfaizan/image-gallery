@@ -1,0 +1,21 @@
+<section id="gallery">
+  <button mat-raised-button  (click)="loginWithGoogle()" style="margin-bottom:2rem"><mat-icon>photo_library</mat-icon>&nbsp;Get Google Photos</button><br>
+  <button mat-raised-button  (click)="loginWithFacebook()" style="margin-bottom:2rem"><mat-icon>photo_library</mat-icon>&nbsp;Get Facebook Photos</button>
+  <h1 *ngIf="images.length!=0">Gallery Photoa</h1>
+  <div class="gallery-container">
+    <mat-card class="gallery" *ngFor="let image of images" (click)="openFullModal(image)">
+      <mat-card-header>
+        <mat-card-title class="my-mat-card-header">{{image.imageTitle}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{image.url}}" alt="{{image.description}}" class="gallery-image">
+      
+    </mat-card>
+    <span *ngIf="images.length==0">No Data Found</span>
+  </div>
+  <div class="add-image-btn">
+    <button mat-fab color="primary" (click)="openModal()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</section>
+<app-my-overlay *ngIf="isShowOverlay"></app-my-overlay>

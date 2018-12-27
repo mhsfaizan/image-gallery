@@ -1,0 +1,33 @@
+.gallery-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.gallery{
+    flex-basis:26%;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+.add-image-btn{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+}
+.gallery-image{
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+}
+
+@media(max-width:768px){
+    .gallery{
+        flex-basis:40%;
+    }
+    .gallery-container{
+        justify-content: center;
+    }
+}
+@media(max-width:550px){
+    .gallery{
+        flex-basis: 90%;
+    }
+}
