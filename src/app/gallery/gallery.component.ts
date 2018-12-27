@@ -3,7 +3,7 @@ import { GalleryServiceService } from '../gallery-service.service';
 import { MatDialog } from '@angular/material';
 import { MyModalComponent } from '../my-modal/my-modal.component';
 import { LoginSignupService } from '../login-signup.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-gallery',
@@ -14,8 +14,6 @@ export class GalleryComponent implements OnInit, OnDestroy {
   constructor(private _gallery: GalleryServiceService, private _mat: MatDialog, private _lg: LoginSignupService, private cd: ChangeDetectorRef, private _http: HttpClient) { }
   images = [];
   uid: any;
-  private client_id = "179286115773-q4t89mni278dr1kt7vdr0urs40mhl6ih.apps.googleusercontent.com";
-  private client_secret = "kOcaJKtEiYBZt1dT-BQ01J_u";
   isShowOverlay: boolean = false;
   ngOnInit() {
     this.uid = this._lg.getUser().id;
@@ -86,28 +84,29 @@ export class GalleryComponent implements OnInit, OnDestroy {
 
   }
   loginWithGoogle() {
-    let idToken, accessToken;
+    // let idToken, accessToken;
     this._lg.loginWithGoogle()
       .then((res) => {
-        // console.log(res.credential);
+        const token = this.getAccessToken(res);
+        console.log(token);
         // res.credential
-        accessToken = this.getAccessToken(res);
-        this._http.get("https://www.googleapis.com/auth/photoslibrary.readonly" + '?access_token=' + encodeURIComponent(accessToken))
-          .subscribe((resp) => {
-            console.log(resp);
-          }, (err) => {
-            console.log(err);
-          })
+        // accessToken = this.getAccessToken(res);
+        // this._http.get("https://www.googleapis.com/auth/photoslibrary.readonly" + '?access_token=' + encodeURIComponent(accessToken))
+        //   .subscribe((resp) => {
+        //     console.log(resp);
+        //   }, (err) => {
+        //     console.log(err);
+        //   })
 
       }, (err) => {
         console.log(err);
       })
   }
   loginWithFacebook() {
-    let accessToken;
+    // let accessToken;
     this._lg.loginWithFacebook()
       .then((resp) => {
-        accessToken = this.getAccessToken(resp);
+        // accessToken = this.getAccessToken(resp);
         // for(let i in resp.credential){
         //   if(i=="accessToken"){
         //     accessToken = resp.credential[i];
@@ -115,12 +114,12 @@ export class GalleryComponent implements OnInit, OnDestroy {
         //   }
         // }
         // console.log(resp.credential);
-        this._http.get("https://graph.facebook.com/20531316728/photos?access_token="+accessToken)
-        .subscribe((resp)=>{
-          console.log(resp);
-        },(err)=>{
-          console.log(err);
-        })
+        // this._http.get("https://graph.facebook.com/20531316728/photos?access_token="+accessToken)
+        // .subscribe((resp)=>{
+        //   console.log(resp);
+        // },(err)=>{
+        //   console.log(err);
+        // })
       }, (err) => {
         console.log(err)
       })
@@ -135,6 +134,6 @@ export class GalleryComponent implements OnInit, OnDestroy {
         accessToken = res.credential[i];
       }
     }
-    return accessToken;
+    return idToken;
   }
 }
