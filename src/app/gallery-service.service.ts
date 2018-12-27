@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -43,5 +44,8 @@ export class GalleryServiceService {
       console.log(err); 
       cb("err");
     })
+  }
+  convertToObservable(images){
+    return of(images);
   }
 }

@@ -1,10 +1,15 @@
-<section style="display: flex">
-  <div style="margin-right:1rem;flex-basis:30%">
+<section class="home">
+  <div style="margin-right:1rem;flex-basis:30%" *ngFor="let image of images" (click)="openModal(image)">
     <mat-card>
-      <h1>Card 1</h1>
+      <mat-card-title><p>{{image.imageTitle}}</p></mat-card-title>
+      <mat-card-content>
+        <div class="image-container">
+          <img  [src]="image.url">
+        </div>
+      </mat-card-content>
     </mat-card>
   </div>
-  <div style="margin-right:1rem;flex-basis:30%">
+  <!-- <div style="margin-right:1rem;flex-basis:30%">
     <mat-card>
       <h1>Card 2</h1>
     </mat-card>
@@ -13,5 +18,5 @@
     <mat-card>
       <h1>Card3</h1>
     </mat-card>
-  </div>
+  </div> -->
 </section>

@@ -1,7 +1,7 @@
 <section id="gallery">
   <button mat-raised-button  (click)="loginWithGoogle()" style="margin-bottom:2rem"><mat-icon>photo_library</mat-icon>&nbsp;Get Google Photos</button><br>
   <button mat-raised-button  (click)="loginWithFacebook()" style="margin-bottom:2rem"><mat-icon>photo_library</mat-icon>&nbsp;Get Facebook Photos</button>
-  <h1 *ngIf="images.length!=0">Gallery Photoa</h1>
+  <h1 *ngIf="images.length!=0">Gallery Photo</h1>
   <div class="gallery-container">
     <mat-card class="gallery" *ngFor="let image of images" (click)="openFullModal(image)">
       <mat-card-header>
