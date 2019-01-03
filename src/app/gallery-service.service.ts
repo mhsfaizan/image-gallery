@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 export class GalleryServiceService {
   imageRef: any;
   constructor(private _http: HttpClient, private _auth: AngularFireAuth, private _db: AngularFireDatabase, private _storage: AngularFireStorage) {
-    this.imageRef = this._storage.storage.ref().child("images");
+    this.imageRef = this._storage.storage.ref();
   }
   getImages() {
     // return this._http.get("assets/gallery.json");
@@ -18,19 +18,20 @@ export class GalleryServiceService {
 
   }
   uploadImage(file) {
-    // return this._storage.storage.ref().child("images/"+file.name).put(file);
-    return this.imageRef.child(file.name)
-      .put(file);
+    console.log(file);
+    return this._storage.storage.ref().child("images/"+file.name).put(file);
+    // return this.imageRef.child("images/"+file.name)
+      // .put(file);
   }
   updateGallery(uid, imageData) {
     imageData.userid = uid;
     return this._db.database.ref("/gallery").push(imageData);
   }
-  getImageUrl(image) {
-    return this._storage.storage.ref().child(image).getDownloadURL();
+  getImageUrl(imagePath) {
+    return this.imageRef.child(imagePath).getDownloadURL();
   }
   delete(id, imagepath,cb) {
-    this._storage.storage.ref().child(imagepath).delete()
+    this.imageRef.child(imagepath).delete()
     .then((res)=>{
       this._db.database.ref("gallery").child(id).remove()
       .then((resp)=>{
